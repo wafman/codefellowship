@@ -66,21 +66,27 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    public String getAllUsers(Model model){
+    public String getAllUsers(Model model, Principal p){
         Iterable<AppUser> users = userRepository.findAll();
         model.addAttribute("users", users);
+        AppUser loggedInUser = userRepository.findByUsername(p.getName());
+        model.addAttribute("loggedInUser", loggedInUser);
         return "users";
     }
 
     @GetMapping("/details/{id}")
-    public String getUserDetail(@PathVariable Long id, Model model){
+    public String getUserDetail(@PathVariable Long id, Model model, Principal p){
         AppUser users = userRepository.findById(id).get();
         model.addAttribute("users", users);
+        AppUser loggedInUser = userRepository.findByUsername(p.getName());
+        model.addAttribute("loggedInUser", loggedInUser);
         return "details";
     }
 
     @GetMapping("/create/post")
-    public String createPost(){
+    public String createPost(Model model, Principal p){
+        AppUser loggedInUser = userRepository.findByUsername(p.getName());
+        model.addAttribute("loggedInUser", loggedInUser);
         return "createPost";
     }
 
