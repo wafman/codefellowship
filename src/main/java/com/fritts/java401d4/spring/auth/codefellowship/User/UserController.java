@@ -28,8 +28,8 @@ public class UserController {
     PasswordEncoder passwordEncoder;
 
     @GetMapping("/")
-    public RedirectView goToLogin(){
-        return new RedirectView("/login");
+    public String splashPage(){
+        return "index";
     }
 
     @GetMapping("/signup")
@@ -56,7 +56,6 @@ public class UserController {
     @GetMapping("/myprofile")
     public String getMyProfileInfo(Principal p, Model m) {
         AppUser user = userRepository.findByUsername(p.getName());
-        System.out.println("====================" + p.getName());
         m.addAttribute("user", user);
         return "myprofile";
     }
@@ -75,10 +74,10 @@ public class UserController {
         return "details";
     }
 
-    @PostMapping("/logout")
-    public RedirectView logoutUser(){
-        return new RedirectView("/login");
-    }
+//    @PostMapping("/logout")
+//    public RedirectView logoutUser(){
+//        return new RedirectView("logout");
+//    }
 
 
 }
