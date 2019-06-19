@@ -10,6 +10,7 @@
 <body>
     <div th:replace="fragments/header :: headerFragment" class="pure-menu pure-menu-horizontal"></div>
     <h1>Welcome <span th:text="${loggedInUser.username}"></span>, to the User Details</h1>
+    <img src="/cf-logo-shield.png" alt="Code Fellows Logo">
     <ul>
         <ul>
             <li th:each="user : ${users}">
