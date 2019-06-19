@@ -2,11 +2,14 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"
+          integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
     <title>Login</title>
 </head>
 <body>
     <h1>Login</h1>
-    <form action="/login" method="POST">
+    <form action="/login" method="POST" class="pure-form pure-form-stacked">
         <input type="text" name="username" id="username" placeholder="User Name" required><br>
         <input type="password" name="password" id="password" placeholder="Password" required><br>
         <input type="submit">
