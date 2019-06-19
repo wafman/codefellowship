@@ -6,7 +6,8 @@
 </head>
 <body>
 <heading></heading>
-    <h3><a th:href="@{/logout}">Logout</a></h3>
+<div th:replace="fragments/header :: headerFragment"></div>
+    <!--<h3><a th:href="@{/logout}">Logout</a></h3>-->
     <h1>Welcome <span th:text="${user.username}"></span></h1>
 
     <h3><a th:href="@{/create/post}">Create Post</a></h3>
