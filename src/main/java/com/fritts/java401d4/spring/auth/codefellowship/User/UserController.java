@@ -1,5 +1,7 @@
 package com.fritts.java401d4.spring.auth.codefellowship.User;
 
+import com.fritts.java401d4.spring.auth.codefellowship.Post.Post;
+import com.fritts.java401d4.spring.auth.codefellowship.Post.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -23,6 +25,9 @@ import java.util.Date;
 public class UserController {
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    PostRepository postRepository;
 
     @Autowired
     PasswordEncoder passwordEncoder;
@@ -74,10 +79,18 @@ public class UserController {
         return "details";
     }
 
-//    @PostMapping("/logout")
-//    public RedirectView logoutUser(){
-//        return new RedirectView("logout");
-//    }
+    @GetMapping("/create/post")
+    public String createPost(){
+        return "createPost";
+    }
+
+    @PostMapping("/create/post")
+    public RedirectView makeAPost(String body, Principal p){
+        AppUser user = userRepository.findByUsername(p.getName());
+        Post post = new Post(body, user);
+        postRepository.save(post);
+        return new RedirectView("/myprofile");
+    }
 
 
 }

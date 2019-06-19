@@ -5,7 +5,15 @@
     <title>User</title>
 </head>
 <body>
-    <h1>Welcome <span th:text="${user.username}"></span></h1>
     <h3><a th:href="@{/logout}">Logout</a></h3>
+    <h1>Welcome <span th:text="${user.username}"></span></h1>
+
+    <h3><a th:href="@{/create/post}">Create Post</a></h3>
+    <h4>Posts</h4>
+    <ul>
+        <li th:each="post : ${user.posts}">
+            <span th:text="${post.body}"></span>
+        </li>
+    </ul>
 </body>
 </html>
