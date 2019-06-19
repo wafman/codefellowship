@@ -70,8 +70,8 @@ public class UserController {
 
     @GetMapping("/details/{id}")
     public String getUserDetail(@PathVariable Long id, Model model){
-        AppUser user = userRepository.findById(id).get();
-        model.addAttribute("user", user);
+        AppUser users = userRepository.findById(id).get();
+        model.addAttribute("users", users);
         return "details";
     }
 

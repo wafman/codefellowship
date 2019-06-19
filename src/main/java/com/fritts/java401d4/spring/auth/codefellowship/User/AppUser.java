@@ -34,6 +34,25 @@ public class AppUser implements UserDetails {
         this.bio = bio;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public String getBio() {
+        return bio;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
