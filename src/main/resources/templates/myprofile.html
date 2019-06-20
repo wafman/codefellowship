@@ -11,7 +11,7 @@
 <div th:replace="fragments/header :: headerFragment"  ></div>
     <!--<h3><a th:href="@{/logout}">Logout</a></h3>-->
     <h1>Welcome <span th:text="${user.username}"></span></h1>
-<img src="/150419-M-MM918-006.jpeg" alt="">
+    <img src="/cf-logo-shield.png" alt="code fellows shield">
     <h4>Posts</h4>
     <ul>
         <li th:each="post : ${user.posts}">
