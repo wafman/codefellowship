@@ -8,7 +8,8 @@
     <title>Title</title>
 </head>
 <body>
-    <div th:replace="fragments/header :: headerFragment" class="pure-menu pure-menu-horizontal"></div>
+    <div th:replace="fragments/header :: headerFragment"  ></div>
+    <img src="/cf-logo-shield.png" alt="code fellows shield">
     <h1><span th:text="${loggedInUser.username}"></span>, Add a post</h1>
     <form action="/create/post" method="POST">
         <input type="text" name="body" id="body" placeholder="Type here" required>

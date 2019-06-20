@@ -20,6 +20,7 @@ import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -67,12 +68,21 @@ public class UserController {
 
     @GetMapping("/users")
     public String getAllUsers(Model model, Principal p){
-        Iterable<AppUser> users = userRepository.findAll();
-        model.addAttribute("users", users);
         AppUser loggedInUser = userRepository.findByUsername(p.getName());
         model.addAttribute("loggedInUser", loggedInUser);
+        Iterable<AppUser> users = userRepository.findAll();
+        List<AppUser> possibleFriends = new ArrayList<>();
+        for(AppUser user : users){
+            if(!user.username.equals(p.getName()) || !loggedInUser.friends.contains(user.username)){
+                possibleFriends.add(user);
+            }
+        }
+        possibleFriends.remove(loggedInUser);
+        possibleFriends.removeAll(loggedInUser.friends);
+        model.addAttribute("possibleFriends", possibleFriends);
         return "users";
     }
+
 
     @GetMapping("/details/{id}")
     public String getUserDetail(@PathVariable Long id, Model model, Principal p){
@@ -99,7 +109,7 @@ public class UserController {
     }
 
     @PostMapping("/follow/{id}")
-    public RedirectView makeFriends(@PathVariable Long id, Principal p, Model model){
+    public RedirectView makeFriends(@PathVariable Long id, Principal p){
         AppUser loggedInUser = userRepository.findByUsername(p.getName());
         AppUser newFriend = userRepository.findById(id).get();
         loggedInUser.friends.add(newFriend);
@@ -110,11 +120,16 @@ public class UserController {
     @GetMapping("/feed")
         public String seeAllFollwedPosts(Model model, Principal p){
         AppUser user = userRepository.findByUsername(p.getName());
-//        AppUser test = userRepository.findById(user.getId()).get();
         model.addAttribute("user", user);
             return "/feed";
         }
-
-
+//
+//    @PostMapping("/unfollow/{id}")
+//    public RedirectView removeFriends(Long id, Principal p, Model m){
+//        AppUser loggedInUser = userRepository.findByUsername(p.getName());
+//        loggedInUser.friends.remove(id);
+//        userRepository.save(loggedInUser);
+//        return new RedirectView("/users");
+//    }
 
 }
