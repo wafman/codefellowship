@@ -57,3 +57,5 @@
   - local datetime examples and explanations
  - [Pure CSS](https://purecss.io/forms/)
   - basic css styling
+ - [Image](https://commons.wikimedia.org/wiki/File:Hd-stock-illustration-sad-face-drawing.jpg)
+ - [Iterables/Collections](https://stackoverflow.com/questions/6416706/easy-way-to-convert-iterable-to-collection)
