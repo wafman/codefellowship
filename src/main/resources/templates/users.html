@@ -8,21 +8,34 @@
     <title>Users</title>
 </head>
 <body>
-    <div th:replace="fragments/header :: headerFragment" class="pure-menu pure-menu-horizontal"></div>
+    <div th:replace="fragments/header :: headerFragment"  ></div>
     <h1>Welcome, <span th:text="${loggedInUser.username}"></span>, to all Users</h1>
-    <!--<ul>-->
-        <!--<li th:each="user : ${users}">-->
-            <!--User Name: <span th:text="${user.username}"></span><br>-->
-            <!--<a th:href="@{'/details/' + ${user.id}}">Details</a>-->
-        <!--</li>-->
-    <!--</ul>-->
-    <table>
+
+    <table class="pure-table pure-table-bordered">
+        <thead>
+        <th>Username</th>
+        <th>Details</th>
+        <th>Status</th>
+        </thead>
+        <tr th:each="user : ${loggedInUser.friends}">
+            <td><span th:text="${user.username}"></span></td>
+            <td><a th:href="@{'/details/' + ${user.id}}">Details</a></td>
+            <td>
+                Friend
+                <!--<form th:action="'/unfollow/' + ${user.id}" method="POST"><input type="submit" value="Un-Follow"></form>-->
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <table class="pure-table pure-table-bordered">
         <thead>
             <th>Username</th>
             <th>Details</th>
             <th>Follow</th>
         </thead>
-        <tr th:each="user : ${users}">
+        <tr th:each="user : ${possibleFriends}">
             <td><span th:text="${user.username}"></span></td>
             <td><a th:href="@{'/details/' + ${user.id}}">Details</a></td>
             <td>
@@ -30,5 +43,6 @@
             </td>
         </tr>
     </table>
+    <!--<div th:replace="fragments/footer :: headerFragment" class="pure-menu pure-menu-horizontal"></div>-->
 </body>
 </html>

@@ -8,10 +8,10 @@
     <title>User</title>
 </head>
 <body>
-<div th:replace="fragments/header :: headerFragment" class="pure-menu pure-menu-horizontal"></div>
+<div th:replace="fragments/header :: headerFragment"  ></div>
     <!--<h3><a th:href="@{/logout}">Logout</a></h3>-->
     <h1>Welcome <span th:text="${user.username}"></span></h1>
-
+<img src="/150419-M-MM918-006.jpeg" alt="">
     <h4>Posts</h4>
     <ul>
         <li th:each="post : ${user.posts}">
@@ -20,7 +20,7 @@
     </ul>
     <h4>Following</h4>
     <ul>
-        <li th:each="friend : ${user.friends}"><span th:text="${friend.username}"></span></li>
+        <li th:each="friend : ${user.friends}"><a th:href="@{'/details/' + ${friend.id}}"><span th:text="${friend.username}"></span></a></li>
     </ul>
 
 </body>
