@@ -24,6 +24,10 @@
   - handles all errors without showing stack trace to user
 - ```@PostMapping("/create/post")```
   - gives the users the ability to create posts
+- ```@PostMapping("/follow/{id}")```
+  - gives uers the ability to follow other users
+- ```@GetMapping("/feed")```
+  - gives users the ability to see the posts of users they follow.
 
 
 
@@ -40,6 +44,11 @@
       - ```localhost:8080/```
       - ```localhost:8080/login```
       - ```localhost:8080/signup```
+      - ```localhost:8080/myprofile```
+      - ```localhost:8080/users```
+      - ```localhost:8080/details/{id}```
+      - ```localhost:8080/create/post```
+      - ```localhost:8080/feed```
  
  ## Acknowledgements
  - [Geeks for Geeks](https://www.geeksforgeeks.org/java/)

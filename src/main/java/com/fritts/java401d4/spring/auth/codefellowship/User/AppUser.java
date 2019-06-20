@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class AppUser implements UserDetails {
@@ -27,6 +28,10 @@ public class AppUser implements UserDetails {
     //database relationship annotation
     @OneToMany(mappedBy = "creator")
     List<Post> posts;
+
+    //allow users to have friends, establish db relationship
+    @ManyToMany
+    Set<AppUser> friends;
 
     public AppUser(){}
     public AppUser(String username, String password, String firstName, String lastName, Date dateOfBirth, String bio){
@@ -60,6 +65,10 @@ public class AppUser implements UserDetails {
 
     public List<Post> getPosts() {
         return posts;
+    }
+
+    public Set<AppUser> getFriends() {
+        return friends;
     }
 
     @Override

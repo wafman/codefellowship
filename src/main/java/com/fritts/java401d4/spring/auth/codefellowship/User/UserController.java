@@ -98,5 +98,23 @@ public class UserController {
         return new RedirectView("/myprofile");
     }
 
+    @PostMapping("/follow/{id}")
+    public RedirectView makeFriends(@PathVariable Long id, Principal p, Model model){
+        AppUser loggedInUser = userRepository.findByUsername(p.getName());
+        AppUser newFriend = userRepository.findById(id).get();
+        loggedInUser.friends.add(newFriend);
+        userRepository.save(loggedInUser);
+        return new RedirectView("/myprofile");
+    }
+
+    @GetMapping("/feed")
+        public String seeAllFollwedPosts(Model model, Principal p){
+        AppUser user = userRepository.findByUsername(p.getName());
+//        AppUser test = userRepository.findById(user.getId()).get();
+        model.addAttribute("user", user);
+            return "/feed";
+        }
+
+
 
 }

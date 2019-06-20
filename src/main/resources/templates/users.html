@@ -10,11 +10,25 @@
 <body>
     <div th:replace="fragments/header :: headerFragment" class="pure-menu pure-menu-horizontal"></div>
     <h1>Welcome, <span th:text="${loggedInUser.username}"></span>, to all Users</h1>
-    <ul>
-        <li th:each="user : ${users}">
-            User Name: <span th:text="${user.username}"></span><br>
-            <a th:href="@{'/details/' + ${user.id}}">Details</a>
-        </li>
-    </ul>
+    <!--<ul>-->
+        <!--<li th:each="user : ${users}">-->
+            <!--User Name: <span th:text="${user.username}"></span><br>-->
+            <!--<a th:href="@{'/details/' + ${user.id}}">Details</a>-->
+        <!--</li>-->
+    <!--</ul>-->
+    <table>
+        <thead>
+            <th>Username</th>
+            <th>Details</th>
+            <th>Follow</th>
+        </thead>
+        <tr th:each="user : ${users}">
+            <td><span th:text="${user.username}"></span></td>
+            <td><a th:href="@{'/details/' + ${user.id}}">Details</a></td>
+            <td>
+                <form th:action="'/follow/' + ${user.id}" method="POST"><input type="submit" value="Follow"></form>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>
