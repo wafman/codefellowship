@@ -108,7 +108,10 @@ public class UserController {
     }
 
     @GetMapping("/feed")
-        public String seeAllFollwedPosts(){
+        public String seeAllFollwedPosts(Model model, Principal p){
+        AppUser user = userRepository.findByUsername(p.getName());
+//        AppUser test = userRepository.findById(user.getId()).get();
+        model.addAttribute("user", user);
             return "/feed";
         }
 

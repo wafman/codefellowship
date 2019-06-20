@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>My Feed</title>
 </head>
 <body>
+<div th:replace="fragments/header :: headerFragment" class="pure-menu pure-menu-horizontal"></div>
     <h1>My Feed:</h1>
-
+    <fieldset th:each="person : ${user.friends}">
+        <legend th:text="${person.username}"></legend>
+        <ul>
+            <li th:each="post : ${person.posts}"><span th:text="${post.body}"></span></li>
+        </ul>
+    </fieldset>
 </body>
 </html>

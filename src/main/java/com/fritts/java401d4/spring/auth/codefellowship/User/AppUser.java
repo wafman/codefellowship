@@ -67,6 +67,10 @@ public class AppUser implements UserDetails {
         return posts;
     }
 
+    public Set<AppUser> getFriends() {
+        return friends;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;

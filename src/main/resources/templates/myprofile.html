@@ -20,7 +20,7 @@
     </ul>
     <h4>Following</h4>
     <ul>
-        <li></li>
+        <li th:each="friend : ${user.friends}"><span th:text="${friend.username}"></span></li>
     </ul>
 
 </body>
