@@ -107,5 +107,11 @@ public class UserController {
         return new RedirectView("/myprofile");
     }
 
+    @GetMapping("/feed")
+        public String seeAllFollwedPosts(){
+            return "/feed";
+        }
+
+
 
 }
