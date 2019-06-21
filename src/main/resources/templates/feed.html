@@ -5,18 +5,26 @@
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"
           integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
     <title>My Feed</title>
 </head>
 <body>
     <div th:replace="fragments/header :: headerFragment"  ></div>
-    <img src="/cf-logo-shield.png" alt="code fellows shield">
-    <h1>My Feed:</h1>
-    <fieldset th:each="person : ${user.friends}">
-        <legend ><a th:href="@{'/details/' + ${person.id}}"><span th:text="${person.username}"></span></a></legend>
-        <ul>
-            <li th:each="post : ${person.posts}"><span th:text="${post.body}"></span></li>
-        </ul>
-    </fieldset>
+    <main>
+        <img src="/cf-logo-shield.png" alt="code fellows shield">
+        <h1>My Feed:</h1>
+        <fieldset th:each="person : ${user.friends}">
+            <legend ><a th:href="@{'/details/' + ${person.id}}"><span th:text="${person.username}"></span></a></legend>
+            <p th:each="post : ${person.posts}">
+                <span th:text="${post.createdAt}"></span><br>
+                <span th:text="${post.body}"></span>
+            </p>
+            <!--<ul>-->
+                <!--<li th:each="post : ${person.posts}"><span th:text="${post.body}"></span></li>-->
+            <!--</ul>-->
+        </fieldset>
+    </main>
+
     <div th:replace="fragments/footer :: footerFragment" class="pure-menu pure-menu-horizontal"></div>
 </body>
 </html>
