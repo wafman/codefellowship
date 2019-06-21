@@ -14,16 +14,15 @@
        <h1>Welcome <span th:text="${user.username}"></span></h1>
        <img src="/cf-logo-shield.png" alt="code fellows shield">
        <div class="container">
-           <h4>Posts</h4>
-           <ul>
-               <li th:each="post : ${user.posts}">
-                   <span th:text="${post.body}"></span>
-               </li>
-           </ul>
-           <h4>Following</h4>
-           <ul>
-               <li th:each="friend : ${user.friends}"><a th:href="@{'/details/' + ${friend.id}}"><span th:text="${friend.username}"></span></a></li>
-           </ul>
+           <section>
+               <h4>Posts</h4>
+               <p th:each="post : ${user.posts}"><span th:text="${post.body}"></span></p>
+           </section>
+           <section>
+               <h4>Following</h4>
+               <p th:each="friend : ${user.friends}"><a th:href="@{'/details/' + ${friend.id}}"><span th:text="${friend.username}"></span></a></p>
+           </section>
+
        </div>
 
    </main>

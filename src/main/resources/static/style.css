@@ -1,5 +1,7 @@
 * {
-    font-family: Comic Sands MS;
+    font-family: Comic Sans MS;
+    background-color: black;
+    color: white;
 }
 
 
@@ -18,8 +20,15 @@ main {
 
 .headerFragment {
     text-align: center;
+    margin: 30px;
 }
 
 .footerFragment {
+    text-align: center;
+    margin: 30px;
+}
+
+section {
+    margin: 30px;
     text-align: center;
 }
