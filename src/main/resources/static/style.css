@@ -1,7 +1,25 @@
-.navBar {
+* {
+    font-family: Comic Sands MS;
+}
+
+
+main {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     align-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.headerFragment {
+    text-align: center;
+}
+
+.footerFragment {
+    text-align: center;
 }

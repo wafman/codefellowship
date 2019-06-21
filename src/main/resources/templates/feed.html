@@ -17,5 +17,6 @@
             <li th:each="post : ${person.posts}"><span th:text="${post.body}"></span></li>
         </ul>
     </fieldset>
+    <div th:replace="fragments/footer :: footerFragment" class="pure-menu pure-menu-horizontal"></div>
 </body>
 </html>
