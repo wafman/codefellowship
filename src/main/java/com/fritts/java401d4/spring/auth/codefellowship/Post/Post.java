@@ -1,11 +1,11 @@
 package com.fritts.java401d4.spring.auth.codefellowship.Post;
 
 import com.fritts.java401d4.spring.auth.codefellowship.User.AppUser;
-import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.*;
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
-import java.util.Date;
+
 
 @Entity
 public class Post {
