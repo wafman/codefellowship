@@ -49,6 +49,7 @@
       - ```localhost:8080/details/{id}```
       - ```localhost:8080/create/post```
       - ```localhost:8080/feed```
+- deployed link http://codefellowship-dev-2.us-west-2.elasticbeanstalk.com/
  
  ## Acknowledgements
  - [Geeks for Geeks](https://www.geeksforgeeks.org/java/)
